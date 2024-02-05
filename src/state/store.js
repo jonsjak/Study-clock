@@ -1,12 +1,12 @@
-import { configureStore } from "@reduxjs/toolkit";
-import breakSlice from "./breakSlice";
-import studySlice from ""
-import sessionSlice from "./sessionSlice";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import breakSlice from "./reducers/breakSlice";
+import studySlice from "./reducers/studySlice";
+import sessionSlice from "./reducers/sessionSlice";
 
-export const store = configureStore({
-  reducers: {
-    break: breakSlice,
-    study: studySlice,
-    session: sessionSlice
-  }
-});
+const reducer = combineReducers({
+  break: breakSlice.reducer,
+  study: studySlice.reducer,
+  session: sessionSlice.reducer
+})
+
+export const store = configureStore({ reducer });

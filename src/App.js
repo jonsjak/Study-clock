@@ -12,7 +12,7 @@ function App() {
   return (
     <Provider store={store}>
       <div className="App">
-        <h1>Study Clock</h1>
+        <h1>Study O'clock</h1>
         <div>
           <BreakLength />
           <StudyLength />
