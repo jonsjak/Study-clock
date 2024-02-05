@@ -1,5 +1,5 @@
 import { Provider } from 'react-redux';
-import './App.css';
+import './styles/App.css';
 import { BreakLength } from './components/BreakLength';
 import { ClockStarter } from './components/ClockStarter';
 import { Credits } from './components/Credits';

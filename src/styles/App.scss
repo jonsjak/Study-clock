@@ -1,0 +1,12 @@
+$primary-color: rgb(77, 75, 185);
+$secondary-color: rgb(216, 178, 214);
+$tertiary-color: rgb(142, 13, 103);
+
+* {
+  background-color: $primary-color;
+  color: $secondary-color;
+}
+
+h1, h2, h3 {
+  color: $tertiary-color
+}
