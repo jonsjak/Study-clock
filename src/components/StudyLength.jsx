@@ -1,22 +1,27 @@
+import React from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { decreaseStudy, increaseStudy } from "../state/reducers/studySlice";
+import { FaArrowUp, FaArrowDown } from 'react-icons/fa';
+import { LengthContainer } from './LengthContainer';
+import { TimerSpan } from './TimerSpan';
+import { StyledButton } from './StyledButton';
 
 export const StudyLength = () => {
-  //default study length
   const dispatch = useDispatch();
   const studyDuration = useSelector(state => state.study.duration);
-  // insert button icons
-  const downIcon = "down icon";
-  const upIcon = "up icon";
 
   return (
-    <>
+    <LengthContainer>
       <h2>StudyLength</h2>
-      <span>
-        <button onClick={() => dispatch(decreaseStudy())}>{downIcon}</button>
+      <TimerSpan>
+        <StyledButton onClick={() => dispatch(decreaseStudy())}>
+          <FaArrowDown />
+        </StyledButton>
         <p>{studyDuration}</p>
-        <button onClick={() => dispatch(increaseStudy())}>{upIcon}</button>
-      </span>
-    </>
+        <StyledButton onClick={() => dispatch(increaseStudy())}>
+          <FaArrowUp />
+        </StyledButton>
+      </TimerSpan>
+    </LengthContainer>
   )
 }
