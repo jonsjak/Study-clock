@@ -2,7 +2,6 @@ import { Provider } from 'react-redux';
 import './styles/App.css';
 import styled from 'styled-components';
 import { BreakLength } from './components/BreakLength';
-import { ClockStarter } from './components/ClockStarter';
 import { Credits } from './components/Credits';
 import { Session } from './components/Session';
 import { StudyLength } from './components/StudyLength';
