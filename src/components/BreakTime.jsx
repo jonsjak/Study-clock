@@ -1,25 +1,22 @@
-import { useSelector } from 'react-redux';
-import { SessionContainer } from './SessionContainer';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { ClockStarter } from './ClockStarter';
+import { setBreakTime } from '../state/reducers/breakSlice';
 
 export const BreakTime = () => {
   //Initial time from redux
-  const initialBreakTime = useSelector(state => state.break.duration*60);
+  const initialBreakTime = useSelector(state => state.break.duration);
+  const isBreakTime = useSelector(state => state.break.isBreakTime)
   const [timeRemaining, setTimeRemaining] = useState(initialBreakTime);
- 
-  useEffect(() => {
-    // Reset timer when duration changes
-    setTimeRemaining(initialBreakTime);
-  }, [initialBreakTime]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
       const timerInterval = setInterval(() => {
         setTimeRemaining((prevTime) => {
           if (prevTime === 0) {
             clearInterval(timerInterval);
-            console.log('Countdown complete!');
-            return 0;
+            if (isBreakTime) {
+              dispatch(setBreakTime(!isBreakTime))
+            }
           } else {
             return prevTime - 1;
           }
@@ -28,7 +25,7 @@ export const BreakTime = () => {
   
       // Cleanup the interval when the component unmounts
       return () => clearInterval(timerInterval);
-  }, [initialBreakTime]);
+  }, [initialBreakTime, isBreakTime, dispatch]);
 
   // convert time input to minutes and seconds
   const minutes = Math.floor((timeRemaining % 3600) / 60);
@@ -37,7 +34,6 @@ export const BreakTime = () => {
   //...and format to have leading zeros
   const formattedMinutes = minutes < 10 ? ("0" + minutes) : minutes;
   const formattedSeconds = seconds < 10 ? ("0" + seconds) : seconds;
-
   
   return (
     <h2>{formattedMinutes}:{formattedSeconds}</h2>

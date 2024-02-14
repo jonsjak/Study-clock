@@ -6,6 +6,7 @@ import { Credits } from './components/Credits';
 import { Session } from './components/Session';
 import { StudyLength } from './components/StudyLength';
 import { store } from './state/store';
+import { ClockStarter } from './components/ClockStarter';
 
 const AppContainer = styled.div`
   display: flex;
@@ -30,6 +31,7 @@ const App = () => {
           <StudyLength />
         </BreakAndStudyContainer>
         <Session />
+        <ClockStarter />
         <Credits />  
       </AppContainer>
     </ Provider>
