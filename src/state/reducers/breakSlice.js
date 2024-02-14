@@ -11,7 +11,7 @@ const breakSlice = createSlice({
     },
     decreaseBreak: (state, action) => {
       // decrease limited to 0 (no negatives)
-      state.duration > 0 ? state.duration-- : state.duration = 0
+      state.duration = state.duration > 0 ? state.duration - 1 : 0
     }
   }
 });

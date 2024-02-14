@@ -1,4 +1,3 @@
-import React from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { decreaseStudy, increaseStudy } from "../state/reducers/studySlice";
 import { FaArrowUp, FaArrowDown } from 'react-icons/fa';

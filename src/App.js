@@ -31,7 +31,6 @@ const App = () => {
           <StudyLength />
         </BreakAndStudyContainer>
         <Session />
-        <ClockStarter />
         <Credits />  
       </AppContainer>
     </ Provider>
