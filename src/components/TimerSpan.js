@@ -5,4 +5,5 @@ export const TimerSpan = styled.div`
   justify-content: center;
   align-items: center;
   gap: 20px;
+  font-size: 20px;
 `

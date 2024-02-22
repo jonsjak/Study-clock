@@ -11,7 +11,7 @@ export const StudyLength = () => {
 
   return (
     <LengthContainer>
-      <h2 id="study-length">StudyLength</h2>
+      <h2 id="study-length">Study Length</h2>
       <TimerSpan>
         <StyledButton id="break-decrement" onClick={() => dispatch(decreaseStudy())}>
           <FaArrowDown />

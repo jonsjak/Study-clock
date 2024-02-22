@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { decreaseBreak, setItIsBreakTime } from '../state/reducers/breakSlice';
 import { resetTimer } from '../state/reducers/studySlice';
+import { resetThunk } from '../state/thunks/resetThunk';
 
 export const BreakTime = () => {
   // Initial break time from Redux
@@ -17,12 +18,7 @@ export const BreakTime = () => {
         if (timeRemaining === 0) {
           clearInterval(timerInterval);
           // Perform actions when the timer reaches zero
-          const alarmSound = new Audio("/clock-alarm-8761.mp3");
-          alarmSound.play();
-          if (isBreakTime) {
-            dispatch(setItIsBreakTime(false)); // Switch off break time
-            dispatch(resetTimer())
-          }
+          dispatch(resetThunk);
         } else {
           dispatch(decreaseBreak()); // Assuming you have a decrementTime action in your reducer
         }
