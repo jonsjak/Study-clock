@@ -14,6 +14,10 @@ const studySlice = createSlice({
     decreaseStudy: (state, action) => {
       state.duration = state.duration > 0 ? state.duration - 1 : 0;
     },
+    setDuration: (state, action) => {
+      state.duration = action.payload;
+    }
+    ,
     startStopTimer: state => {
       state.isRunning = !state.isRunning;
     },
@@ -25,5 +29,5 @@ const studySlice = createSlice({
   }
 });
 
-export const { increaseStudy, decreaseStudy, startStopTimer, resetTimer } = studySlice.actions;
+export const { increaseStudy, decreaseStudy, startStopTimer, resetTimer, setDuration } = studySlice.actions;
 export default studySlice;

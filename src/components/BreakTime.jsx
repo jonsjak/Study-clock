@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { decreaseBreak, setItIsBreakTime } from '../state/reducers/breakSlice';
-import { resetTimer } from '../state/reducers/studySlice';
+import { decreaseBreak } from '../state/reducers/breakSlice';
 import { resetThunk } from '../state/thunks/resetThunk';
 
 export const BreakTime = () => {
