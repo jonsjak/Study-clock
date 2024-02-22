@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
 import { decreaseStudy, increaseStudy } from "../state/reducers/studySlice";
 import { FaArrowUp, FaArrowDown } from 'react-icons/fa';
-import { LengthContainer } from './LengthContainer';
-import { TimerSpan } from './TimerSpan';
-import { StyledButton } from './StyledButton';
+import { LengthContainer } from './styled_components/LengthContainer';
+import { TimerSpan } from './styled_components/TimerSpan';
+import { StyledButton } from './styled_components/StyledButton';
 
 export const StudyLength = () => {
   const studyDuration = useSelector(state => state.study.duration);

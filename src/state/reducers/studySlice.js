@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const studySlice = createSlice({
   name: 'study',
   initialState: {
-    duration: 5,
+    duration: 5,  // change to minutes
     isRunning: false,
     isReset: false
   },

@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { SessionContainer } from './SessionContainer';
+import { SessionContainer } from './styled_components/SessionContainer';
 import { BreakTime } from './BreakTime';
 import { StudyTime } from './StudyTime';
 

@@ -39,7 +39,7 @@ export const BreakTime = () => {
 
   return (
     <>
-      <h2>
+      <h2 style={{color: "red"}}>
         {formattedMinutes}:{formattedSeconds}
       </h2>
     </>
