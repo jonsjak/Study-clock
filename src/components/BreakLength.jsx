@@ -11,12 +11,12 @@ export const BreakLength = () => {
 
   return (
     <LengthContainer>
-      <h2>Break Length</h2>
+      <h2 id="break-label">Break Length</h2>
       <TimerSpan>
         <StyledButton onClick={() => dispatch(decreaseBreak())}>
           <FaArrowDown/>
         </StyledButton>
-        <p>{breakDuration}</p>
+        <p id="break-length">{breakDuration}</p>
         <StyledButton onClick={() => dispatch(increaseBreak())}>
           <FaArrowUp />
         </StyledButton>

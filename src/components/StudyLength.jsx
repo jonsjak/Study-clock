@@ -6,18 +6,18 @@ import { TimerSpan } from './TimerSpan';
 import { StyledButton } from './StyledButton';
 
 export const StudyLength = () => {
-  const dispatch = useDispatch();
   const studyDuration = useSelector(state => state.study.duration);
+  const dispatch = useDispatch();
 
   return (
     <LengthContainer>
-      <h2>StudyLength</h2>
+      <h2 id="study-length">StudyLength</h2>
       <TimerSpan>
-        <StyledButton onClick={() => dispatch(decreaseStudy())}>
+        <StyledButton id="break-decrement" onClick={() => dispatch(decreaseStudy())}>
           <FaArrowDown />
         </StyledButton>
-        <p>{studyDuration}</p>
-        <StyledButton onClick={() => dispatch(increaseStudy())}>
+        <p id="session-length">{studyDuration}</p>
+        <StyledButton id="session-decrement"onClick={() => dispatch(increaseStudy())}>
           <FaArrowUp />
         </StyledButton>
       </TimerSpan>

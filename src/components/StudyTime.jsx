@@ -1,43 +1,36 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
-import { setBreakTime } from '../state/reducers/breakSlice';
+import { useEffect } from 'react';
+import { setItIsBreakTime } from '../state/reducers/breakSlice';
+import { decreaseStudy } from '../state/reducers/studySlice';
 
 export const StudyTime = () => {
   //Initial time from redux
-  const initialTime = useSelector(state => state.study.duration);
+  const timeRemaining = useSelector(state => state.study.duration);
   const isRunning = useSelector(state => state.study.isRunning);
   const isBreakTime = useSelector(state => state.break.isBreakTime);
-  const [timeRemaining, setTimeRemaining] = useState(initialTime);
   const dispatch = useDispatch();
 
   useEffect(() => {
     //if timer is started...
     if (isRunning) {
       const timerInterval = setInterval(() => {
-        setTimeRemaining(prevTime => {
-          if (prevTime === 0) {
-            clearInterval(timerInterval);
-            // Perform actions when the timer reaches zero
-            const alarmSound = new Audio("/clock-alarm-8761.mp3");
-            alarmSound.play();
-            if(!isBreakTime){
-              dispatch(setBreakTime(true));
-            }
-          } else {
-            return prevTime - 1;
+        if (timeRemaining === 0) {
+          clearInterval(timerInterval);
+          // Perform actions when the timer reaches zero
+          const alarmSound = new Audio("/clock-alarm-8761.mp3");
+          alarmSound.play();
+          if (!isBreakTime) {
+            dispatch(setItIsBreakTime(true));
           }
-        });
+        } else {
+          dispatch(decreaseStudy()); // Assuming you have a decrementTime action in your reducer
+        }
       }, 1000);
 
       // Cleanup the interval when the component unmounts
       return () => clearInterval(timerInterval);
     }
-  }, [isRunning, initialTime, isBreakTime, dispatch]);
-
-  //resetting the initialTime
-  useEffect(() => {
-    setTimeRemaining(initialTime);
-  }, [initialTime]);
+  }, [isRunning, timeRemaining, isBreakTime, dispatch]);
 
   // convert time input to minutes and seconds
   const minutes = Math.floor((timeRemaining % 3600) / 60);

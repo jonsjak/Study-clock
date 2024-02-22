@@ -1,33 +1,26 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { FaPlayCircle, FaPauseCircle } from "react-icons/fa";
 import { FaArrowsRotate } from "react-icons/fa6";
-import { startTimer, pauseTimer, resetTimer } from '../state/reducers/studySlice';
+import { startStopTimer } from '../state/reducers/studySlice';
+import { resetThunk } from '../state/thunks/resetThunk';
 
 export const ClockStarter = () => {
+  const isRunning = useSelector(state => state.study.isRunning)
   const dispatch = useDispatch();
-
-  const handleStartTimer = () => {
-    dispatch(startTimer());
-    console.log("started");
-  };
-
-  const handlePauseTimer = () => {
-    dispatch(pauseTimer());
-    console.log("paused");
-  };
-
-  const handleResetTimer = () => {
-    if (window.confirm("Do you really want to reset the timer?")) {
-      dispatch(resetTimer());
-    }
-  };
 
   return (
     <div style={{ display: 'flex', gap: '50px' }}>
-      <FaPlayCircle onClick={handleStartTimer} />
-      <FaPauseCircle onClick={handlePauseTimer} />
-      <FaArrowsRotate onClick={handleResetTimer} />
+      <button id="start_stop" onClick={() => dispatch(startStopTimer())}>
+        {isRunning? 
+          <FaPauseCircle /> :
+          <FaPlayCircle /> 
+        }
+      </button>
+      
+      <button id="reset" onClick={() => dispatch(resetThunk)}>
+        <FaArrowsRotate />
+      </button>
     </div>
   )  
 };

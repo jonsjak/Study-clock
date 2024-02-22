@@ -14,11 +14,15 @@ const breakSlice = createSlice({
       // decrease limited to 0 (no negatives)
       state.duration = state.duration > 0 ? state.duration - 1 : 0
     },
-    setBreakTime: (state, action) => {
-      state.isBreakTime = true
+    setItIsBreakTime: (state, action) => {
+      state.isBreakTime = true;
+    },
+    resetBreak: (state, action) => {
+      state.duration = 5;
+      state.isBreakTime = false;
     }
   }
 });
 
-export const { increaseBreak, decreaseBreak, setBreakTime } = breakSlice.actions;
+export const { increaseBreak, decreaseBreak, setItIsBreakTime, resetBreak } = breakSlice.actions;
 export default breakSlice;

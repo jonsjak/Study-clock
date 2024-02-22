@@ -8,10 +8,13 @@ export const Session = () => {
 
   return (
     <SessionContainer>
-      {isBreakTime ? 
-      <BreakTime/> :
-      <StudyTime />
-      }        
+      <h2 id="timer-label">Session</h2>
+      <div id="time-left">
+        {isBreakTime ? 
+        <BreakTime/> :
+        <StudyTime />
+        }   
+      </div>    
     </SessionContainer>
   )
 }
