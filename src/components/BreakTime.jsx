@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { decreaseBreak } from '../state/reducers/breakSlice';
 import { resetThunk } from '../state/thunks/resetThunk';
+import { BreakClockText } from './styled_components/BreakClockText';
 
 export const BreakTime = () => {
   // Initial break time from Redux
@@ -38,9 +39,9 @@ export const BreakTime = () => {
 
   return (
     <>
-      <h2 style={{color: "red"}}>
+      <BreakClockText>
         {formattedMinutes}:{formattedSeconds}
-      </h2>
+      </BreakClockText>
     </>
   );
 };

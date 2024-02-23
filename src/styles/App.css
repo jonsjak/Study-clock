@@ -1,6 +1,10 @@
-* {
-  background-color: rgb(71, 69, 196);
-  color: rgb(254, 199, 230);
+body {
+  background: url("/public/aaron-burden-QJDzYT_K8Xg-unsplash.jpg");
+  color: rgb(160, 160, 231);
+}
+
+h2 {
+  color: rgb(131, 133, 195);
 }
 
 /*# sourceMappingURL=App.css.map */

@@ -1,8 +1,22 @@
-$primary-color: rgb(71, 69, 196);
-$secondary-color: rgb(254, 199, 230);
-$tertiary-color: rgb(228, 201, 220);
+$primary-color: rgb(160, 160, 231);
+$secondary-color: rgb(131, 133, 195);
+$tertiary-color: rgb(31, 171, 199);
 
-* {
-  background-color: $primary-color;
+body {
+  background: url("/public/aaron-burden-QJDzYT_K8Xg-unsplash.jpg");
+  color: $primary-color;
+}
+
+h2 {
   color: $secondary-color;
+}
+
+
+//decrement arrows
+#break-decrement, #study-decrement {
+}
+
+//increment arrows
+#break-increment, #session-increment {
+  
 }

@@ -36,11 +36,11 @@ export const BreakLength = () => {
     <LengthContainer>
       <h2 id="break-label">Break Length</h2>
       <TimerSpan>
-        <StyledButton onClick={() => handleDecrease()}>
+        <StyledButton id="break-decrement" onClick={() => handleDecrease()}>
           <FaArrowDown/>
         </StyledButton>
         <p id="break-length">{breakLength}</p>
-        <StyledButton onClick={() => handleIncrease()}>
+        <StyledButton id="break-increment" onClick={() => handleIncrease()}>
           <FaArrowUp />
         </StyledButton>
       </TimerSpan>
