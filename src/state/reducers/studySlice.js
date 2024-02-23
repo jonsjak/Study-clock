@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const studySlice = createSlice({
   name: 'study',
   initialState: {
-    duration: 5,  // change to minutes
+    duration: 25,  // time in seconds
     isRunning: false,
     isResetting: false
   },
@@ -24,7 +24,7 @@ const studySlice = createSlice({
     resetTimer: (state) => {
       state.isRunning = false;
       state.isResetting = true;
-      state.duration = 5;
+      state.duration = 25;
     },
     resetIsDone: (state) => {
       state.isResetting=false

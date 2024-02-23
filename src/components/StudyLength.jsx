@@ -19,7 +19,7 @@ export const StudyLength = () => {
   useEffect(() => {
     const breakIsUp = (isResetting || isBreakTime);
     if (breakIsUp) {
-      setStudyLength(5);
+      setStudyLength(25);
       dispatch(resetIsDone())
     };
   }, [breakDuration, dispatch, isBreakTime, isResetting])
@@ -30,9 +30,8 @@ export const StudyLength = () => {
 
   const handleIncrease = () => {
     if (!isRunning) {
-      if (!isRunning && studyLength === studyDuration) {
-        const newDuration = studyLength + 1;
-        setStudyLength(newDuration);
+      if (studyLength === studyDuration) {
+        setStudyLength(studyLength + 1);
         dispatch(increaseStudy());
       } else {
         dispatch(setDuration(studyLength))
@@ -54,13 +53,13 @@ export const StudyLength = () => {
 
   return (
     <LengthContainer>
-      <h2 id="study-length">Study Length</h2>
+      <h2 id="session-label">Session Length</h2>
       <TimerSpan>
-        <StyledButton id="break-decrement" onClick={() => {handleDecrease()}}>
+        <StyledButton id="session-decrement" onClick={() => {handleDecrease()}}>
           <FaArrowDown />
         </StyledButton>
         <p id="session-length">{studyLength}</p>
-        <StyledButton id="session-decrement"onClick={() => {handleIncrease()}}>
+        <StyledButton id="session-increment" onClick={() => {handleIncrease()}}>
           <FaArrowUp />
         </StyledButton>
       </TimerSpan>

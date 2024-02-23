@@ -1,30 +1,38 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { setItIsBreakTime } from '../state/reducers/breakSlice';
-import { decreaseStudy } from '../state/reducers/studySlice';
 
 export const StudyTime = () => {
   //Initial time from redux
-  const timeRemaining = useSelector(state => state.study.duration);
+  const initialTime = useSelector(state => state.study.duration * 60);
+  const [timeRemaining, setTimeRemaining] = useState(initialTime);
   const isRunning = useSelector(state => state.study.isRunning);
   const isBreakTime = useSelector(state => state.break.isBreakTime);
   const dispatch = useDispatch();
 
   useEffect(() => {
+    // Update the time remaining whenever the study duration changes
+    setTimeRemaining(initialTime);
+  }, [initialTime]);
+
+  useEffect(() => {
     //if timer is started...
     if (isRunning) {
       const timerInterval = setInterval(() => {
-        if (timeRemaining === 0) {
-          clearInterval(timerInterval);
-          // Perform actions when the timer reaches zero
-          const alarmSound = new Audio("/clock-alarm-8761.mp3");
-          alarmSound.play();
-          if (!isBreakTime) {
+        // Update the remaining time every second
+        setTimeRemaining(prevTime => {
+          if (prevTime === 0) {
+            clearInterval(timerInterval);
+            // Perform actions when the timer reaches zero
+            const alarmSound = new Audio("/clock-alarm-8761.mp3");
+            alarmSound.play();
+            // toggles breaktime
             dispatch(setItIsBreakTime(true));
+            return 0;
+          } else {
+            return prevTime - 1;
           }
-        } else {
-          dispatch(decreaseStudy()); // Assuming you have a decrementTime action in your reducer
-        }
+        });
       }, 1000);
 
       // Cleanup the interval when the component unmounts

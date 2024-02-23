@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { decreaseBreak } from '../state/reducers/breakSlice';
+import { useEffect, useState } from 'react';
 import { resetThunk } from '../state/thunks/resetThunk';
 
 export const BreakTime = () => {
   // Initial break time from Redux
   const isRunning = useSelector(state => state.study.isRunning);
-  const timeRemaining = useSelector(state => state.break.duration);
+  const initialTime = useSelector(state => state.break.duration * 60);
+  const [timeRemaining, setTimeRemaining] = useState(initialTime);
   const isBreakTime = useSelector(state => state.break.isBreakTime);
   const dispatch = useDispatch();
 
@@ -14,19 +14,22 @@ export const BreakTime = () => {
     // If timer is started and it's break time
     if (isRunning && isBreakTime) {
       const timerInterval = setInterval(() => {
-        if (timeRemaining === 0) {
-          clearInterval(timerInterval);
-          // Perform actions when the timer reaches zero
-          dispatch(resetThunk);
-        } else {
-          dispatch(decreaseBreak()); // Assuming you have a decrementTime action in your reducer
-        }
+        setTimeRemaining(prevTime => {
+          if (prevTime === 0) {
+            clearInterval(timerInterval);
+            // Perform actions when the timer reaches zero
+            dispatch(resetThunk());
+            return 0;
+          } else {
+            return prevTime - 1;
+          }
+        });
       }, 1000);
 
       // Cleanup the interval when the component unmounts
       return () => clearInterval(timerInterval);
     }
-  }, [isRunning, timeRemaining, isBreakTime, dispatch]);
+  }, [isRunning, isBreakTime, dispatch]);
 
   // Convert time input to minutes and seconds
   const minutes = Math.floor((timeRemaining % 3600) / 60);
