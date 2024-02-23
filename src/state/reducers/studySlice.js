@@ -5,29 +5,32 @@ const studySlice = createSlice({
   initialState: {
     duration: 5,  // change to minutes
     isRunning: false,
-    isReset: false
+    isResetting: false
   },
   reducers: {
-    increaseStudy: (state, action) => {
+    increaseStudy: (state) => {
       state.duration++;
     },
-    decreaseStudy: (state, action) => {
+    decreaseStudy: (state) => {
       state.duration = state.duration > 0 ? state.duration - 1 : 0;
     },
     setDuration: (state, action) => {
       state.duration = action.payload;
     }
     ,
-    startStopTimer: state => {
+    startStopTimer: (state) => {
       state.isRunning = !state.isRunning;
     },
-    resetTimer: state => {
+    resetTimer: (state) => {
       state.isRunning = false;
-      state.isReset = true;
+      state.isResetting = true;
       state.duration = 5;
     },
+    resetIsDone: (state) => {
+      state.isResetting=false
+    }
   }
 });
 
-export const { increaseStudy, decreaseStudy, startStopTimer, resetTimer, setDuration } = studySlice.actions;
+export const { increaseStudy, decreaseStudy, startStopTimer, resetTimer, setDuration, resetIsDone } = studySlice.actions;
 export default studySlice;

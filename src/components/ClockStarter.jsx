@@ -7,9 +7,6 @@ import { resetThunk } from '../state/thunks/resetThunk';
 import { StyledButton } from './styled_components/StyledButton';
 import { ClockStarterContainer } from './styled_components/ClockStarterContainer';
 
-
-
-
 export const ClockStarter = () => {
   const isRunning = useSelector(state => state.study.isRunning)
   const dispatch = useDispatch();
@@ -23,7 +20,9 @@ export const ClockStarter = () => {
         }
       </StyledButton>
       
-      <StyledButton id="reset" onClick={() => dispatch(resetThunk)}>
+      <StyledButton
+        id="reset"
+        onClick={() => dispatch(resetThunk)}>
         <FaArrowsRotate />
       </StyledButton>
     </ClockStarterContainer>

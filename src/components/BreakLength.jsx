@@ -5,25 +5,28 @@ import { LengthContainer } from "./styled_components/LengthContainer";
 import { TimerSpan } from "./styled_components/TimerSpan";
 import { StyledButton } from "./styled_components/StyledButton";
 import { useEffect, useState } from "react";
-import { resetThunk } from "../state/thunks/resetThunk";
 
 export const BreakLength = () => {
   const dispatch = useDispatch();
   const breakDuration = useSelector(state => state.break.duration);
   const [breakLength, setBreakLength] = useState(breakDuration);
+  const isBreakTime = useSelector(state => state.break.isBreakTime);
+  const isResetting = useSelector(state => state.study.isResetting);
 
+  // resets the breakLenght when clock reaches 0 or is reset by other comp
   useEffect(() => {
-    const breakIsUp = breakDuration === 0;
+    const breakIsUp = (isResetting || isBreakTime);
     if (breakIsUp) {
-      setTimeout(() => setBreakLength(5), 1000)
-    }
-  }, [breakDuration, dispatch])
+      setBreakLength(5);
+    };
+  }, [isBreakTime, isResetting])
 
+  //adding time
   const handleIncrease = () => {
     setBreakLength(breakLength + 1)
     dispatch(increaseBreak())
   }
-
+  //subtract time
   const handleDecrease = () => {
     setBreakLength(breakLength > 0 ? breakLength - 1 : breakLength);
     dispatch(decreaseBreak());
