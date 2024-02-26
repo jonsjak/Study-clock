@@ -8,8 +8,8 @@ import { useEffect, useState } from "react";
 
 export const BreakLength = () => {
   const dispatch = useDispatch();
-  const breakDuration = useSelector(state => state.break.duration);
-  const [breakLength, setBreakLength] = useState(breakDuration);
+  const initialDuration = useSelector(state => state.break.duration);
+  const [breakLength, setBreakLength] = useState(initialDuration);
   const isBreakTime = useSelector(state => state.break.isBreakTime);
   const isResetting = useSelector(state => state.study.isResetting);
 
@@ -17,14 +17,14 @@ export const BreakLength = () => {
   useEffect(() => {
     const breakIsUp = (isResetting || isBreakTime);
     if (breakIsUp) {
-      setBreakLength(5);
+      setBreakLength(initialDuration);
     };
-  }, [isBreakTime, isResetting])
+  }, [initialDuration, isBreakTime, isResetting])
 
   //adding time
   const handleIncrease = () => {
-    setBreakLength(breakLength + 1)
-    dispatch(increaseBreak())
+    if (breakLength < 60) setBreakLength(breakLength + 1);
+    dispatch(increaseBreak());
   }
   //subtract time
   const handleDecrease = () => {

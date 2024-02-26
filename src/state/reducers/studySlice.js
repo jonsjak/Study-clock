@@ -24,7 +24,6 @@ const studySlice = createSlice({
     restartTimer: (state) => {
       state.isRunning = true;
       state.isResetting = false;
-      state.duration = 25;
     },
     resetTimer: (state) => {
       state.isResetting = true;

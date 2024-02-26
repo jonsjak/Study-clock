@@ -7,8 +7,8 @@ import { StyledButton } from './styled_components/StyledButton';
 import { useEffect, useState } from "react";
 
 export const StudyLength = () => {
-  const studyDuration = useSelector(state => state.study.duration);
-  const [studyLength, setStudyLength] = useState(studyDuration);
+  const initialDuration = useSelector(state => state.study.duration);
+  const [studyLength, setStudyLength] = useState(initialDuration);
   const dispatch = useDispatch();
   const isRunning = useSelector(state => state.study.isRunning);
   const breakDuration = useSelector(state => state.break.duration);
@@ -19,10 +19,10 @@ export const StudyLength = () => {
   useEffect(() => {
     const breakIsUp = (isResetting || isBreakTime);
     if (breakIsUp) {
-      setStudyLength(25);
+      setStudyLength(initialDuration);
       dispatch(resetIsDone())
     };
-  }, [breakDuration, dispatch, isBreakTime, isResetting])
+  }, [breakDuration, dispatch, isBreakTime, isResetting, initialDuration])
   //First makes sure to only handle changes when clock is NOT running
   //then checks if the local duration from the useState is equal to the redux state
   //then checks for increase or decrease (as long as studyLenght > 0)
@@ -30,7 +30,7 @@ export const StudyLength = () => {
 
   const handleIncrease = () => {
     if (!isRunning) {
-      if (studyLength === studyDuration) {
+      if (studyLength === initialDuration && studyLength < 60) {
         setStudyLength(studyLength + 1);
         dispatch(increaseStudy());
       } else {
@@ -41,7 +41,7 @@ export const StudyLength = () => {
 
   const handleDecrease = () => {
     if (!isRunning) {
-      if (studyLength > 1 && studyLength === studyDuration) {
+      if (studyLength > 1 && studyLength === initialDuration) {
         const newDuration = studyLength - 1;
         setStudyLength(newDuration);
         dispatch(decreaseStudy());
