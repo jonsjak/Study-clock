@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { resetThunk } from '../state/thunks/resetThunk';
+import { restartTimer } from '../state/reducers/studySlice';
+import { resetBreak } from '../state/reducers/breakSlice';
 
 export const BreakTime = () => {
   // Initial break time from Redux
@@ -17,8 +18,8 @@ export const BreakTime = () => {
         setTimeRemaining(prevTime => {
           if (prevTime === 0) {
             clearInterval(timerInterval);
-            // Perform actions when the timer reaches zero
-            dispatch(resetThunk());
+            dispatch(restartTimer())
+            dispatch(resetBreak());
             return 0;
           } else {
             return prevTime - 1;

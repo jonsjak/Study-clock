@@ -8,16 +8,25 @@ export const StudyTime = () => {
   const [timeRemaining, setTimeRemaining] = useState(initialTime);
   const isRunning = useSelector(state => state.study.isRunning);
   const isBreakTime = useSelector(state => state.break.isBreakTime);
+  const isResetting = useSelector(state => state.study.isResetting);
   const dispatch = useDispatch();
 
   useEffect(() => {
     // Update the time remaining whenever the study duration changes
     setTimeRemaining(initialTime);
+    console.log(initialTime);
   }, [initialTime]);
 
   useEffect(() => {
+    if (isResetting) {
+      console.log("resetting")
+      setTimeRemaining(initialTime)
+    }
+  }, [isResetting, initialTime])
+
+  useEffect(() => {
     //if timer is started...
-    if (isRunning) {
+    if (isRunning && !isBreakTime) {
       const timerInterval = setInterval(() => {
         // Update the remaining time every second
         setTimeRemaining(prevTime => {
@@ -35,7 +44,6 @@ export const StudyTime = () => {
         });
       }, 1000);
 
-      // Cleanup the interval when the component unmounts
       return () => clearInterval(timerInterval);
     }
   }, [isRunning, timeRemaining, isBreakTime, dispatch]);
