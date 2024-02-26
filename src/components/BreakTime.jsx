@@ -44,7 +44,7 @@ export const BreakTime = () => {
     <>
       <h2 id="time-left" style={{color: "red"}}>
         {formattedMinutes}:{formattedSeconds}
-      </BreakClockText>
+      </h2>
     </>
   );
 };
