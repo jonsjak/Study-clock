@@ -41,7 +41,7 @@ export const StudyLength = () => {
 
   const handleDecrease = () => {
     if (!isRunning) {
-      if (studyLength > 0 && studyLength === studyDuration) {
+      if (studyLength > 1 && studyLength === studyDuration) {
         const newDuration = studyLength - 1;
         setStudyLength(newDuration);
         dispatch(decreaseStudy());

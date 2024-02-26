@@ -28,7 +28,7 @@ export const BreakLength = () => {
   }
   //subtract time
   const handleDecrease = () => {
-    setBreakLength(breakLength > 0 ? breakLength - 1 : breakLength);
+    setBreakLength(breakLength > 1 ? breakLength - 1 : breakLength);
     dispatch(decreaseBreak());
   }
 

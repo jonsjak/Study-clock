@@ -22,7 +22,7 @@ const studySlice = createSlice({
       state.isRunning = !state.isRunning;
     },
     resetTimer: (state) => {
-      state.isRunning = false;
+      /* state.isRunning = false; */
       state.isResetting = true;
       state.duration = 25;
     },
