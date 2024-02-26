@@ -9,7 +9,7 @@ export const Session = () => {
   return (
     <SessionContainer>
       <h2 id="timer-label">{isBreakTime? "Break time!" : "Study session"}</h2>
-      <div id="time-left">
+      <div>
         {isBreakTime ? 
         <BreakTime/> :
         <StudyTime />

@@ -22,7 +22,7 @@ export const ClockStarter = () => {
       
       <StyledButton
         id="reset"
-        onClick={() => dispatch(resetThunk)}>
+        onClick={() => dispatch(resetThunk())}>
         <FaArrowsRotate />
       </StyledButton>
     </ClockStarterContainer>

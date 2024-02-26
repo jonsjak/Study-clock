@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const studySlice = createSlice({
   name: 'study',
   initialState: {
-    duration: 5,  // change to minutes
+    duration: 25,
     isRunning: false,
     isResetting: false
   },
@@ -21,10 +21,13 @@ const studySlice = createSlice({
     startStopTimer: (state) => {
       state.isRunning = !state.isRunning;
     },
+    restartTimer: (state) => {
+      state.isRunning = true;
+      state.isResetting = false;
+    },
     resetTimer: (state) => {
-      state.isRunning = false;
       state.isResetting = true;
-      state.duration = 5;
+      state.duration = 25;
     },
     resetIsDone: (state) => {
       state.isResetting=false
@@ -32,5 +35,5 @@ const studySlice = createSlice({
   }
 });
 
-export const { increaseStudy, decreaseStudy, startStopTimer, resetTimer, setDuration, resetIsDone } = studySlice.actions;
+export const { increaseStudy, decreaseStudy, startStopTimer, restartTimer, resetTimer, setDuration, resetIsDone } = studySlice.actions;
 export default studySlice;
