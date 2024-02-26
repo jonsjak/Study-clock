@@ -14,12 +14,10 @@ export const StudyTime = () => {
   useEffect(() => {
     // Update the time remaining whenever the study duration changes
     setTimeRemaining(initialTime);
-    console.log(initialTime);
   }, [initialTime]);
 
   useEffect(() => {
     if (isResetting) {
-      console.log("resetting")
       setTimeRemaining(initialTime)
     }
   }, [isResetting, initialTime])
