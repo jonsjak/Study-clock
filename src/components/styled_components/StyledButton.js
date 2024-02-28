@@ -1,20 +1,23 @@
 import styled from "styled-components";
 
 export const StyledButton = styled.button`
-  border: none;
+  color: ${props => props.theme.colors.text};
+  border-color: ${props => props.theme.colors.text};
+  border-width: 4px;
   cursor: pointer;
   border-radius: 25%;
-  padding: 10px;
-  box-shadow: 1px 4px 5px ${props => props.theme.colors.shadow};
-  transition: all 0.3s ease; /* Add a transition for smoother animation */
+  width: 40px;
+  height: 40px;
+  margin: 8px;
 
-  :hover {
-    opacity: 0.7;
-    transform: scaleY(1.1);
-    background-color: ${props => props.theme.colors.hover}; /* Change background color on hover */
+  &:hover {
+    transform: scale(1.1);
+    opacity: 0.8;
   }
 
-  :active {
-    transform: scale(1.3);
+  &:active {
+    transform: scale(1.2);
+    color: rgb(44 47 74);
+    opacity: 1;
   }
 `;

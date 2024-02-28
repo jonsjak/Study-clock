@@ -5,5 +5,5 @@ export const LengthContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 170px;
+  width: 172px;
 `

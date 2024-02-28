@@ -4,5 +4,5 @@ export const TimerSpan = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 120px;
+  width: 130px;
 `

@@ -56,7 +56,7 @@ export const StudyTime = () => {
 
   return (
     <>
-      <h2 id="time-left">
+      <h2 id="time-left" style={{fontSize: "26px"}}>
         {formattedMinutes}:{formattedSeconds}
       </h2>
     </>

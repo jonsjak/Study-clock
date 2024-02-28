@@ -1,15 +1,21 @@
 export const theme = {
   colors: {
-    background: "rgb(255, 228, 235)", // Light pink background
-    shadow: "rgba(0, 0, 0, 0.2)", // Light grey shadow
-    primary: "rgb(173, 216, 230)", // Light blue
-    text: "rgb(101 7 81)", // Indigo text color
-    button: "rgb(219, 112, 147)", // Pink button color
-    buttonText: "white", // White button text color
+    background: "rgb(143 35 64 / 84%)", 
+    shadow: "rgba(0, 0, 0, 0.2)",
+    header: "rgb(255 255 255)",
+    subHeader: "rgb(255 155 72)",
+    text: "rgb(255 155 72)",
+    button: "rgb(182 124 143)"
   },
   fonts: {
     header: "'Roboto', sans-serif", // Example font for h1
     subHeader: "'Open Sans', sans-serif", // Example font for h2
     body: "'Montserrat', sans-serif", // Example font for body text
+  },
+  textSizes: {
+    header: "28px",
+    subHeader: "20px",
+    body: "18px",
+    clock: "24px"
   }
 };

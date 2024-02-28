@@ -8,37 +8,31 @@ export const AppContainer = styled.div`
   background-color: ${props => props.theme.colors.background};
   justify-content: center;
   align-items: center;
-  margin: 50px auto;
+  margin: 40px auto;
   padding: 20px;
   box-shadow: 15px 24px 22px 8.5px ${props => props.theme.colors.shadow};
   border-radius: 15px;
-  opacity: 0.8;
+  box-shadow: 1px 3px 20px 0px ${props => props.theme.colors.subHeader};
 
     @media (max-width: 667px) {
-      max-width: 80%;
-    }
-
-    @media (min-width: 668) and (max-width: 1024px) {
-      max-width: 80%;
+      max-width: 90%;
     }
 
     h1 {
-      color: ${props => props.theme.colors.primary};
-      font-family: ${props => props.theme.fonts.text};
+      color: ${props => props.theme.colors.header};
+      font-family: ${props => props.theme.fonts.header};
+      font-size: ${props => props.theme.textSizes.header};
     }
 
     h2 {
-      color: ${props => props.theme.colors.text};
+      color: ${props => props.theme.colors.subHeader};
       font-family: ${props => props.theme.fonts.text};
+      font-size: ${props => props.theme.textSizes.subHeader};
     }
 
     p {
       color: ${props => props.theme.colors.text};
       font-family: ${props => props.theme.fonts.body};
-    }
-
-    button {
-      background-color: ${props => props.theme.colors.button};
-      color: ${props => props.theme.colors.buttonText};
+      font-size: ${props => props.theme.textSizes.body};
     }
 `;
